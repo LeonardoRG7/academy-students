@@ -1,1 +1,129 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #eff5f5 !important;
+    font-family: Play, sans-serif !important;
+    scroll-behavior: smooth;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #eb6440;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #d6e4e5;
+  }
+  
+  ::selection {
+    background-color: #497174;
+    color: #d6e4e5;
+  }
+  
+  .Header {
+    align-items: center;
+    background-color: #eff5f5;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+  
+  .Header img {
+    margin-right: 5px;
+    width: 70px;
+  }
+  
+  .btnWork {
+    background-color: #eb6440 !important;
+    bottom: 30px;
+    position: fixed !important;
+    right: 30px;
+    z-index: 1;
+    width: 56px;
+    height: 56px;
+  }
+  
+  .iconBtn {
+    color: #d6e4e5;
+    display: flex;
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tarea {
+    height: 100%;
+    max-height: 200px;
+    position: relative;
+  }
+  
+  .tareaContent {
+    padding: 16px;
+  }
+  
+  .tareasList {
+    margin-top: 7rem !important;
+  }
+  
+  .footer {
+    padding: 50px 0;
+    background-color: #eff5f5;
+    text-align: center;
+  }
+  
+  .footer .social-links a {
+    height: 40px;
+    width: 40px;
+    display: inline-flex;
+    background-color: #497174;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    margin: 0 4px;
+    border: 1px solid transparent;
+    transition: all 0.5s ease;
+  }
+  
+  a {
+    color: #d6e4e5 !important;
+    text-decoration: none !important;
+  }
+  
+  .footer .social-links a:hover {
+    background-color: transparent;
+    color: #eb6440 !important;
+    border-radius: initial;
+  }
+  
+  .footer-copy {
+    margin-top: 1.5rem;
+  }
+  
+  .card {
+    background-color: #d6e4e5 !important;
+    border: none !important;
+  }
+  
+  input,
+  textarea {
+    background-color: #eff5f5 !important;
+  }
+  
+  .contenido {
+    width: 20rem;
+  }
+  
+  .card-body i {
+    cursor: pointer;
+  }
+  
+  .btnTarea {
+    background-color: #eb6440 !important;
+    border: none !important;
+    color: #fff !important;
+  }

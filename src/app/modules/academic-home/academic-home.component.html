@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="Header">
+    <img src="../../../assets/img/logo.png" alt="Logo Header" />
+    <h1>Estudiantes</h1>
+  </div>
+  <div class="sendTarea">
+    <button
+      class="btn btnWork"
+      routerLink="/create-student"
+      *ngIf="createStudentButton"
+    >
+      <i class="fa-solid fa-plus iconBtn"></i>
+    </button>
+  </div>
+  <div class="d-flex justify-content-between mt-5 align-items-center container">
+    <div class="subject mt-5">
+      <button class="btn btn-danger" routerLink="/subjects-list">
+        Materias
+      </button>
+      <button class="btn btn-success" routerLink="/assing-subject">
+        Matricular materias
+      </button>
+    </div>
+  </div>
+  <div
+    class="row gap-lg-2 gap-md-5 flex-wrap justify-content-center"
+    *ngIf="students.length > 0"
+  >
+    <div
+      class="col-lg-3 col-md-5 mb-3 mb-md-0 mt-5"
+      *ngFor="let student of students"
+    >
+      <div class="card contenido">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ student.firstName }} {{ student.lastName }}
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ student.email }}</h6>
+          <p class="card-text">{{ student.age }}</p>
+          <i
+            class="fa-solid fa-trash text-danger"
+            (click)="deleteStudent(student.id)"
+          ></i>
+          <i
+            class="fa-regular fa-pen-to-square text-primary float-end"
+            [routerLink]="['/edit-student', student.id]"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tareaVacia">
+    <h5 class="tareaNull" *ngIf="students.length === 0">
+      No hay estudiantes para mostrar
+    </h5>
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="social-links">
+      <a
+        href="https://www.linkedin.com/in/leonardo-riascos-20b466200/"
+        title="LinkedIn"
+        target="_blank"
+        ><i class="fa-brands fa-linkedin"></i
+      ></a>
+      <a href="https://github.com/LeonardoRG7" title="GitHub" target="_blank"
+        ><i class="fa-brands fa-github"></i
+      ></a>
+      <a
+        href="https://leonardoriascosportafolio.netlify.app/"
+        title="Portafolio"
+        target="_blank"
+        ><i class="fa-solid fa-link"></i
+      ></a>
+    </div>
+    <p class="footer-copy" data-section="footer" data-value="copy">
+      © RiascosDEV.me All right reserved <br />
+      Made with ❤️ in Colombia
+    </p>
+  </div>
+</footer>

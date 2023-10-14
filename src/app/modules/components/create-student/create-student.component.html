@@ -1,0 +1,138 @@
+<div class="container mt-5" >
+  <div class="row justify-content-center align-items-center g-2">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo fs-2">{{ nombreTitulo }}</span>
+          <form
+            class="mt-4"
+            [formGroup]="studentForm"
+            (ngSubmit)="addStudent()"
+          >
+            <div class="mb-3">
+              <input
+                type="text"
+                formControlName="firstName"
+                class="form-control form-control-lg"
+                placeholder="Ingrese nombre"
+              />
+              <!-- con ngIf valida si el input contiene texto, y si no devolvemos la cadena de texto requerida -->
+              <div
+                class="text-danger text-start mx-1"
+                *ngIf="
+                  studentForm.get('firstName')?.hasError('required') &&
+                  studentForm.get('firstName')?.touched
+                "
+              >
+                <span
+                  >El nombre del estudiante <strong>Es obligatorio!</strong>
+                </span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input
+                type="name"
+                formControlName="lastName"
+                class="form-control form-control-lg"
+                placeholder="Ingrese apellidos"
+              />
+              <div
+                class="text-danger text-start mx-1"
+                *ngIf="
+                  studentForm.get('lastName')?.hasError('required') &&
+                  studentForm.get('lastName')?.touched
+                "
+              >
+                <span
+                  >El apellido del estudiante <strong>Es obligatorio!</strong>
+                </span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <input
+                type="email"
+                formControlName="email"
+                class="form-control form-control-lg"
+                placeholder="Ingrese email"
+              />
+              <div
+                class="text-danger text-start mx-1"
+                *ngIf="
+                  studentForm.get('email')?.hasError('required') &&
+                  studentForm.get('email')?.touched
+                "
+              >
+                <span
+                  >El email del estudiante <strong>Es obligatorio!</strong>
+                </span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <input
+                type="number"
+                formControlName="age"
+                class="form-control form-control-lg"
+                placeholder="Ingrese edad"
+              />
+              <div
+                class="text-danger text-start mx-1"
+                *ngIf="
+                  studentForm.get('age')?.hasError('required') &&
+                  studentForm.get('age')?.touched
+                "
+              >
+                <span
+                  >la edad del estudiante <strong>Es obligatorio!</strong>
+                </span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <button
+                class="btn btn-secondary btn-lg float-start"
+                routerLink="/"
+              >
+                Volver
+              </button>
+              <!-- desabilitaremos el boton siempre y cuando los campos del formulario no tengan contenido-->
+              <button
+                type="submit"
+                [disabled]="studentForm.invalid"
+                class="btn btnTarea btn-lg float-end"
+              >
+                Aceptar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="social-links">
+      <a
+        href="https://www.linkedin.com/in/leonardo-riascos-20b466200/"
+        title="LinkedIn"
+        target="_blank"
+        ><i class="fa-brands fa-linkedin"></i
+      ></a>
+      <a href="https://github.com/LeonardoRG7" title="GitHub" target="_blank"
+        ><i class="fa-brands fa-github"></i
+      ></a>
+      <a
+        href="https://leonardoriascosportafolio.netlify.app/"
+        title="Portafolio"
+        target="_blank"
+        ><i class="fa-solid fa-link"></i
+      ></a>
+    </div>
+    <p class="footer-copy" data-section="footer" data-value="copy">
+      © RiascosDEV.me All right reserved <br />
+      Made with ❤️ in Colombia
+    </p>
+  </div>
+</footer>
