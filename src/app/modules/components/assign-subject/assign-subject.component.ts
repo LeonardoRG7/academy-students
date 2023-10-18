@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Student } from 'src/app/core/interfaces/student';
 import { Subject } from 'src/app/core/interfaces/subject';
 import { AcademicService } from 'src/app/core/services/academic.service';
@@ -14,9 +15,12 @@ export class AssignSubjectComponent {
   selectedStudent: Student | any;
   selectedSubject: Subject | any;
   subjectByStudent: any;
-  isStudent: string = ''
+  isStudent: string = '';
 
-  constructor(private academicService: AcademicService) {}
+  constructor(
+    private academicService: AcademicService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadStudents();
@@ -54,16 +58,16 @@ export class AssignSubjectComponent {
     }
   }
 
-
   getSubjectNames(subjects: any): string {
     return subjects.map((subject: any) => subject.name).join(', ');
   }
-  
+
   showSubjectsForStudent(student: Student | any) {
-    this.academicService.getSubjectsByStudent(student.id).subscribe((subjects) => {
-      this.subjectByStudent = subjects
-      this.selectedStudent = student.firstName
-    })
+    this.academicService
+      .getSubjectsByStudent(student.id)
+      .subscribe((subjects) => {
+        this.subjectByStudent = subjects;
+        this.selectedStudent = student.firstName;
+      });
   }
-  
 }

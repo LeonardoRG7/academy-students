@@ -48,9 +48,9 @@ export class CreateSubjectComponent implements OnInit {
     };
 
     if (this.id !== null) {
-      this.updateSubject(SUBJECT);
-    } else {
       this.createSubject(SUBJECT);
+    } else {
+      this.updateSubject(SUBJECT);
     }
   }
 

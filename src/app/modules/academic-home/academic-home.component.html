@@ -17,8 +17,8 @@
       <button class="btn btn-danger" routerLink="/subjects-list">
         Materias
       </button>
-      <button class="btn btn-success" routerLink="/assing-subject">
-        Matricular materias
+      <button class="btn btn-success" routerLink="/assing-subject" *ngIf="students.length > 0">
+        Asignar materias
       </button>
     </div>
   </div>

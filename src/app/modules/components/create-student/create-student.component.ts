@@ -39,38 +39,58 @@ export class CreateStudentComponent implements OnInit {
         this.router.navigate(['']);
       }
     });
+
     this.isUpdate();
   }
 
   addStudent() {
-    const studentData: Student = this.studentForm.value;
+    const STUDENT: Student = {
+      firstName: this.studentForm.get('firstName')?.value,
+      lastName: this.studentForm.get('lastName')?.value,
+      email: this.studentForm.get('email')?.value,
+      age: this.studentForm.get('age')?.value,
+    };
 
-    if (this.id) {
-      this._academyService.updateStudent(this.id, studentData).subscribe(
-        (data) => {
-          this.router.navigate(['/']);
-        },
-        (error) => {
-          this.studentForm.reset();
-        }
-      );
+    if (this.id !== null) {
+      this.createStudent(STUDENT);
     } else {
-      this._academyService.createStudent(studentData).subscribe(
-        (data) => {
-          this.router.navigate(['/']);
-        },
-        (error) => {
-          this.studentForm.reset();
-        }
-      );
+      this.updateStudent(STUDENT);
     }
   }
 
+  private createStudent(student: Student) {
+    this._academyService.createStudent(student).subscribe(
+      (res) => {
+        console.log('Estudiante creado:', res);
+        this.redirectToStudents();
+      },
+      (error) => {
+        console.error('Error al crear el estudiante:', error);
+      }
+    );
+  }
+
+  private updateStudent(student: Student) {
+    this._academyService.updateStudent(this.id as number, student).subscribe(
+      (res) => {
+        console.log('Estudiante actualizado:', res);
+        this.redirectToStudents();
+      },
+      (error) => {
+        console.error('Error al actualizar el estudiante:', error);
+      }
+    );
+  }
+
+  private redirectToStudents() {
+    this.router.navigate(['/']);
+  }
+
   isUpdate() {
-    if (this.id) {
+    if (this.id !== null) {
       this.nombreTitulo = 'Editar Estudiante';
       this._academyService.getStudentById(this.id).subscribe((data) => {
-        if (data && data.firstName) {
+        if (data && data.firstName && data.lastName && data.email && data.age) {
           this.studentForm.patchValue({
             firstName: data.firstName,
             lastName: data.lastName,
